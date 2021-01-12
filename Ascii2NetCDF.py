@@ -9,7 +9,7 @@ hdstr1='YEAR MNTH DAYS HOUR MINU CLAT CLON SAID WD10 WS10 SWVQ NWVA ISWV SPRR'
 s = pd.read_csv('ncep_2020060906_oscatw-bufrDump.csv',delimiter=',',header=None)
 s.columns = hdstr1.split()
 ### gridding with weight
-ws, yi, xi = np.histogram2d(s['CLAT'], s['CLON'], bins=(720,1440), weights=s['WS10'], normed=False)
+ws, yi, xi = np.histogram2d(s['CLAT'], s['CLON'], bins=(720,1440), weights=s['WS10'], normed=False) #  range=[[-90, 90],[0,360]]
 wd, yi, xi = np.histogram2d(s['CLAT'], s['CLON'], bins=(720,1440), weights=s['WD10'], normed=False)
 ### gridding with count
 count, y, x = np.histogram2d(s['CLAT'], s['CLON'], bins=(720,1440))
